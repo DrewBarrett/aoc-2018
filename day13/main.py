@@ -74,12 +74,21 @@ def p1(lines):
                     cart[3] = -1
                 cart[3] += 1
             i = 0
+            remov = []
+            index = 0
             for c in carts:
                 if c[0] == cart[0] and c[1] == cart[1]:
+                    remov.append(index)
                     i += 1
+                index += 1
             if i > 1:
-                return [cart[0], cart[1]]
-        #print(carts)
+                remov.sort(reverse=True)
+                for cc in remov:
+                    print('Removing %d' % (cc,))
+                    carts.pop(cc)
+                print([cart[0], cart[1]])
+        if len(carts) <= 1:
+            return carts
 
     #return [3, 7]
 def p2(lines):
@@ -92,6 +101,13 @@ def main():
         '| | |  | v  |',\
         '\-+-/  \-+--/',\
         '  \------/   ']))
+    print(p1(['/>-<\  ',
+              '|   |  ',
+              '| /<+-\\',
+              '| | | v',
+              '\\>+</ |',
+              '  |   ^',
+              '  \\<->/']))
     f = open('input').readlines()
     print(p1(f))
     p2(f)
