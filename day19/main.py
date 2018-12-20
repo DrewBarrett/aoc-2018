@@ -37,21 +37,22 @@ def p1(lines):
         elif inst == 'mul':
             res = val1 * val2
         elif inst == 'eqr':
-            res = 1 if A == val2 else 0
+            res = 1 if val1 == val2 else 0
         elif inst == 'eqi':
-            res = 1 if val1 == B else 0
+            res = 1 if A == val2 else 0
         elif inst == 'gtr':
-            res = 1 if A > val2 else 0
+            res = 1 if val1 > val2 else 0
         elif inst == 'gti':
-            res = 1 if val1 > B else 0
+            res = 1 if A > val2 else 0
         else:
             print("UNKNOWN INST", inst)
             exit(-1)
         REGS[C] = res
-        print("ip=%d" % (currRegs[IP],), currRegs.values(), instr, typ, REGS.values())
+        #print("ip=%d" % (currRegs[IP],), currRegs.values(), instr, typ, REGS.values())
         REGS[IP] = REGS[IP] + 1
         if REGS[IP] > len(instrs) - 1 or REGS[IP] < 0:
             break
+    print(REGS.values())
     return 0
 def p2(lines):
     return 0
