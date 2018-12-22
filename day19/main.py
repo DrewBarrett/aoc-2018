@@ -2,13 +2,13 @@
 
 import copy
 
-def p1(lines):
+def p1(lines, start=0):
     lines = [l.strip() for l in lines]
     IP = int(lines[0].split(' ')[-1])
     instrs = lines[1:]
     print(instrs)
     REGS = {
-        0: 0,
+        0: start,
         1: 0,
         2: 0,
         3: 0,
@@ -69,6 +69,7 @@ seti 9 0 5""".split('\n')
     print(p1(test))
     f = open('input').readlines()
     print(p1(f))
+    print(p1(f, 1))
     p2(f)
     return 0
 
